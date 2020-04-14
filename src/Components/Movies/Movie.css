@@ -1,0 +1,8 @@
+.movie .movie__back {
+    height: 250px;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+}
