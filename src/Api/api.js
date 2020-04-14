@@ -39,7 +39,7 @@ export const MoviesAPI = {
     }
 }
 
-export const Genres = {
+export const GenresAPI = {
     movieList() {
         return axios.get(`${baseURL}genre/movie/list?${API_KEY}&language=en-US`)
     }

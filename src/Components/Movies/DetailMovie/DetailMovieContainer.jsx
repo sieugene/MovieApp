@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import DetailMovie from './DetailMovie'
 import { connect } from 'react-redux'
 import { getCurrentMovieTC } from '../../../Redux/moviesReducer'
@@ -7,15 +7,20 @@ import { withRouter } from 'react-router-dom'
 
 
 const DetailMovieContainer = (props) => {
-    let filIm = props.match.params.filmId
+    const[loading,toggle] = useState(true);
+    let filmId = props.match.params.filmId
     useEffect(() => {
         async function fetchData() {
-            const response = await props.getCurrentMovieTC(filIm);
+            await props.getCurrentMovieTC(filmId);
+            toggle(false);
         }
         fetchData();
-    }, [])
+    }, [props.match.params.filmId])
+    if(loading){
+        return <div>Loading</div>
+    }
     return (
-        <DetailMovie />
+        <DetailMovie currentMovie={props.currentMovie}/>
     )
 }
 

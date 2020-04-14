@@ -1,0 +1,6 @@
+.detailMovie .detailMovie__backImg {
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

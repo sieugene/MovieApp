@@ -4,6 +4,7 @@ const SET_MOVIES = 'SET_MOVIES';
 const SET_POPULAR_MOVIES = 'SET_POPULAR_MOVIES'
 const SEARCH = 'SEARCH'
 const CURRENT_MOVIE = 'CURRENT_MOVIE'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
 let initialState = {
     popularMovies: {
@@ -13,7 +14,8 @@ let initialState = {
         total_pages: 0
     },
     search: '',
-    currentMovie: []
+    currentMovie: [],
+    currentPage: 1
 }
 export const movieReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,6 +31,11 @@ export const movieReducer = (state = initialState, action) => {
                     currentMovie: action.currentMovie
                 }
             }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.page
+            }
         default:
             return state
     }
@@ -39,6 +46,12 @@ export const setMoviesAC = (movies) => {
     return {
         type: SET_MOVIES,
         movies
+    }
+}
+export const setCurrentPage = (page) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        page
     }
 }
 export const setPopularMovies = (movies) => {
@@ -53,10 +66,10 @@ export const search = (text) => {
         text
     }
 }
-export const getCurrentMovieAC = (movie) => {
+export const getCurrentMovieAC = (currentMovie) => {
     return {
         type: CURRENT_MOVIE,
-        movie
+        currentMovie
     }
 }
 
@@ -83,6 +96,16 @@ export const getCurrentMovieTC = (filmId) => async(dispatch) => {
     try {
         let promise = await MoviesAPI.getCurrentMovie(filmId)
         dispatch(getCurrentMovieAC(promise.data));
+        console.log(promise)
+    } catch (err) {
+        console.log(err)
+    }
+}
+export const setCurrnetPageTC = (page) => async(dispatch) => {
+    try {
+        dispatch(setCurrentPage(page));
+        let promise = await MoviesAPI.getPopular(page)
+        dispatch(setPopularMovies(promise.data));
         console.log(promise)
     } catch (err) {
         console.log(err)

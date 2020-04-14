@@ -12,3 +12,7 @@ code {
 .mt20 {
     margin-top: 20px;
 }
+
+.pagination .material-icons {
+    cursor: pointer;
+}
