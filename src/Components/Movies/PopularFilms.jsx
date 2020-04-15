@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Movie from './Movie';
 import SearchInput from './Search/SearchInput';
 import Paginator from '../Paginator/Paginator';
+import Preloader from '../Preloader/Preloader';
 
 
 
@@ -32,10 +33,11 @@ const PopularFilms = (props) => {
         </div>
     })
     if (loading) {
-        return <div>loading...</div>
+        return <Preloader />
     }
     return (
         <>
+            {props.loading ? <Preloader /> : ''}
             <div className='mt20'>
                 <div className="row">
                     <div className="col">

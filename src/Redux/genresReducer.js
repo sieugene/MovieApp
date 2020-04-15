@@ -1,10 +1,12 @@
 import { GenresAPI } from "../Api/api";
 
 const GET_GENRES = 'GET_GENRES';
+const TOGGLE_LOADER = 'REC/TOGGLE_LOADER';
 
 
 let initialState = {
-    genreList: []
+    genreList: [],
+    loading: false
 }
 export const genreReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -13,6 +15,12 @@ export const genreReducer = (state = initialState, action) => {
                 ...state,
                 genreList: action.genreList
             }
+        case TOGGLE_LOADER:
+            return {
+                ...state,
+                loading: action.loading
+            }
+
         default:
             return state
     }
@@ -25,14 +33,22 @@ export const setGenresAC = (genreList) => {
         genreList
     }
 }
+export const toggleLoading = (loading) => {
+    return {
+        type: TOGGLE_LOADER,
+        loading
+    }
+}
 
 
 export const setGenresTC = () => async(dispatch) => {
     try {
+        dispatch(toggleLoading(true));
         let promise = await GenresAPI.movieList()
         dispatch(setGenresAC(promise.data));
-        console.log(promise)
+        dispatch(toggleLoading(false));
     } catch (err) {
         console.log(err)
+        dispatch(toggleLoading(false));
     }
 }

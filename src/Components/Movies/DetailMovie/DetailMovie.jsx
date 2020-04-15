@@ -1,6 +1,7 @@
 import React from 'react';
 import StarIcon from '../../Helpers/StarIcon';
 import './DetailMovie.css'
+import Preloader from '../../Preloader/Preloader';
 
 
 const DetailMovie = (props) => {
@@ -11,6 +12,8 @@ const DetailMovie = (props) => {
     }
 
     return (
+        <>
+        {props.loading ? <Preloader/> : ''}
         <div className='detailMovie'>
             <div className="detailMovie__wrapper">
                 <div className="detailMovie__backImg" style={movieBack}></div>
@@ -56,6 +59,7 @@ const DetailMovie = (props) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

@@ -19,3 +19,35 @@
 .movie .truncate {
     width: 194px;
 }
+
+.movie .movie__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.movie .movie__info p,
+.movie .movie__info .material-icons {
+    font-size: 16px;
+}
+
+.movie .movie__info i {
+    color: #fb7516
+}
+
+.movie .movie-date {
+    color: #777676cf;
+}
+
+.movie .movie-title {
+    color: #3e3c3c;
+}
+
+.movie .star-icon {
+    color: #fb7516
+}
+
+.movie .movie__info p {
+    margin: 0;
+    padding: 0;
+}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getCurrentMovieTC } from '../../../Redux/moviesReducer'
 import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
+import Preloader from '../../Preloader/Preloader'
 
 
 const DetailMovieContainer = (props) => {
@@ -12,12 +13,13 @@ const DetailMovieContainer = (props) => {
     useEffect(() => {
         async function fetchData() {
             await props.getCurrentMovieTC(filmId);
+            window.scrollTo(0, 0)
             toggle(false);
         }
         fetchData();
     }, [props.match.params.filmId])
     if(loading){
-        return <div>Loading</div>
+        return <Preloader/>
     }
     return (
         <DetailMovie currentMovie={props.currentMovie}/>
@@ -26,7 +28,8 @@ const DetailMovieContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        currentMovie: state.movies.currentMovie
+        currentMovie: state.movies.currentMovie,
+        loading: state.movies.loading
     }
 }
 

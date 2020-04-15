@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setPopularMoviesTC,searchTC, setCurrnetPageTC } from '../../Redux/moviesReducer';
 import { setGenresTC } from '../../Redux/genresReducer';
 import { compose } from 'redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -18,7 +18,8 @@ let mapStateToProps = (state) => {
     return {
         popularMovies: state.movies.popularMovies,
         genreList: state.genres.genreList,
-        currentPage: state.movies.currentPage
+        currentPage: state.movies.currentPage,
+        loading: state.movies.loading
     }
 }
 

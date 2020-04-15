@@ -6,6 +6,7 @@ import Recommendation from './Recommendation';
 import { withRouter } from 'react-router-dom';
 import { setRecommendationsTC, setCurrnetPageRecTC } from '../../Redux/recommendationReducer';
 import { setGenresTC } from '../../Redux/genresReducer';
+import Preloader from '../Preloader/Preloader';
 
 const RecommendationContainer = (props) => {
     const [loading, toggle] = useState(true);
@@ -18,7 +19,7 @@ const RecommendationContainer = (props) => {
         fetchData();
     }, [props.match.params.page])
     if (loading) {
-        return <div>Loading</div>
+        return ''
     }
     return (
         <Recommendation {...props} />
@@ -29,7 +30,8 @@ let mapStateToProps = (state) => {
     return {
         recommendation: state.rec.recommendation,
         currentPageRec: state.rec.page,
-        genreList: state.genres.genreList
+        genreList: state.genres.genreList,
+        loading: state.rec.loading
     }
 }
 

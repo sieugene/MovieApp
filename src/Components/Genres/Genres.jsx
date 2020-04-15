@@ -5,7 +5,7 @@ const Genres = (props) => {
     let arrayOfGenreId = props.genre_ids;
     let arrayOfListGenres = props.genresList;
     let resultArray = []
-    for (var i = 0; i < arrayOfGenreId.length; i++) {
+    for (let i = 0; i < arrayOfGenreId.length; i++) {
         let match = arrayOfListGenres.filter(function (item) {
             return item.id === arrayOfGenreId[i];
         });

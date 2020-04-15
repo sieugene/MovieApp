@@ -2,6 +2,7 @@ import React from 'react';
 import './Recommendation.css'
 import Paginator from '../Paginator/Paginator';
 import Movie from '../Movies/Movie';
+import Preloader from '../Preloader/Preloader';
 
 const Recommendation = (props) => {
     const getMovies = props.recommendation.results.map((f) => {
@@ -18,6 +19,7 @@ const Recommendation = (props) => {
     })
     return (
         <>
+        {props.loading ? <Preloader/> : ''}
             <div className="container">
                 <div className='mt20'>
                     <div className="row">
