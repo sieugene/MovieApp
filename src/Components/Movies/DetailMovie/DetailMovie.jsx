@@ -9,7 +9,7 @@ const DetailMovie = (props) => {
     const movieBack = {
         backgroundImage: `url(https://image.tmdb.org/t/p/w1280_and_h720_bestv2/${props.currentMovie.poster_path})`,
     }
-    
+
     return (
         <div className='detailMovie'>
             <div className="detailMovie__wrapper">
@@ -28,7 +28,7 @@ const DetailMovie = (props) => {
                             RunTime: {props.currentMovie.runtime} min
                         </div>
                         <div className="col s12 m4 l3 xl3">
-                            Languages:<ul>{props.currentMovie.spoken_languages.map((l,index) => {
+                            Languages:<ul>{props.currentMovie.spoken_languages.map((l, index) => {
                             return <li key={index}>{l.name}</li>
                         })}</ul>
                         </div>
@@ -45,7 +45,7 @@ const DetailMovie = (props) => {
                         </div>
                         <div className="col">
                             <b>Genres:</b> <ul>
-                                {props.currentMovie.genres.map((g,index) => {
+                                {props.currentMovie.genres.map((g, index) => {
                                     return <li key={index}>
                                         {g.name}
                                     </li>
@@ -55,7 +55,6 @@ const DetailMovie = (props) => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

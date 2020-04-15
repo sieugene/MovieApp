@@ -12,9 +12,9 @@ const Movie = (props) => {
     }
     return (
         <div className={'movie'}>
-            <NavLink to={`detail/${props.id}`}>
+            <NavLink exact to={`/detail/${props.id}/page/1`}>
                 <div className={"movie__back"} style={movieBack}></div>
-                <h5>{props.title}</h5>
+                <h5 className='truncate'>{props.title}</h5>
                 <div className="row">
                     <div className="col">
                         {props.release_date}

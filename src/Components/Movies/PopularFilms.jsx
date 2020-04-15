@@ -6,11 +6,13 @@ import Paginator from '../Paginator/Paginator';
 
 
 
+
 const PopularFilms = (props) => {
     const [loading, toggle] = useState(true);
+
     useEffect(() => {
         async function fetchData() {
-            await props.setPopularMoviesTC(props.currentPage);
+            await props.setPopularMoviesTC(props.match.params.page);
             await props.setGenresTC();
             toggle(false);
         }
@@ -18,7 +20,7 @@ const PopularFilms = (props) => {
     }, [])
 
     const getMovies = props.popularMovies.results.map((f) => {
-        return <div className="col" key={f.id}>
+        return <div className="col s12 m6 l4 xl3" key={f.id}>
             <Movie title={f.title}
                 release_date={f.release_date}
                 vote_average={f.vote_average}
@@ -40,19 +42,18 @@ const PopularFilms = (props) => {
                         <h5 className='left-align'>Popular Films</h5>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col">
-                        <SearchInput searchTC={props.searchTC} setPopularMoviesTC={props.setPopularMoviesTC} />
-                    </div>
-                </div>
+
+                <SearchInput searchTC={props.searchTC} setPopularMoviesTC={props.setPopularMoviesTC} />
+
                 <div className="row">
                     {getMovies}
                 </div>
             </div>
             <Paginator pageSize={props.popularMovies.total_pages}
-                currentPage={props.currentPage}
+                currentPage={props.match.params.page}
                 onPageCurrentChange={props.setCurrnetPageTC}
                 portionSize={10}
+                path={'/popular/'}
             />
         </>
     )

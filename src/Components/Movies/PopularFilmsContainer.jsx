@@ -3,6 +3,8 @@ import PopularFilms from './PopularFilms';
 import { connect } from 'react-redux';
 import { setPopularMoviesTC,searchTC, setCurrnetPageTC } from '../../Redux/moviesReducer';
 import { setGenresTC } from '../../Redux/genresReducer';
+import { compose } from 'redux';
+import { withRouter, Redirect } from 'react-router-dom';
 
 
 
@@ -20,4 +22,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { setPopularMoviesTC,searchTC,setGenresTC,setCurrnetPageTC})(PopularFilmsContainer)
+export default compose(connect(mapStateToProps, { 
+    setPopularMoviesTC,searchTC,setGenresTC,setCurrnetPageTC}),
+    withRouter
+    )(PopularFilmsContainer)

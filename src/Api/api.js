@@ -32,7 +32,7 @@ export const MoviesAPI = {
         return axios.get(`${baseURL}movie/${filmId}?${API_KEY}&language=en-US`)
     },
     getRecommendations(filmId, currnetPage) {
-        return axios.get(`${baseURL}movie/${filmId}?${API_KEY}&language=en-US&page=${currnetPage}`)
+        return axios.get(`${baseURL}movie/${filmId}/recommendations?${API_KEY}&language=en-US&page=${currnetPage}`)
     },
     search(query) {
         return axios.get(`${baseURL}search/movie?${API_KEY}&query=${query}`)

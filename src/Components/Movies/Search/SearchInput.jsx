@@ -16,11 +16,11 @@ const SearchInput = (props) => {
     return (
         <form onSubmit={onSubmit}>
             <div className="row">
-                <div className="col">
+                <div className="col s10">
                     <input onChange={handleChange} />
                 </div>
-                <div className="col">
-                    <button>Ok</button>
+                <div className="col s2">
+                    <button className='waves-effect waves-light btn-small'>Search</button>
                 </div>
             </div>
         </form>
