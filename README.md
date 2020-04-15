@@ -1,3 +1,20 @@
+## Test task 'MovieApp'
+> Task:
+You need to write a single page application for viewing movies using The Movie Database API - https://developers.themoviedb.org/3/
+When you open the app, you should see a list of popular movies with pagination. There should also be a search field on the page. For each movie, the list should show a list of genres (genre names, not id) that it belongs to.
+When you click on a movie card, you should see a page with detailed information about this movie and a list of recommended movies for it.
+Put your working app somewhere, for example, on GitHub Pages or AWS S3.
+By technology – at your discretion, only React and Redux are required.
+
+Using libraries: `React,redux,redux-thunk,materialize-css,axios,react-router-dom.`
+Link - https://sieugene.github.io/MovieApp/#/popular/1
+
+![demo](https://github.com/sieugene/MovieApp/blob/master/src/assets/1.png)
+![demo](https://github.com/sieugene/MovieApp/blob/master/src/assets/2.png)
+![demo](https://github.com/sieugene/MovieApp/blob/master/src/assets/3.png)
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
